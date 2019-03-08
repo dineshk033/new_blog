@@ -13,7 +13,7 @@ class App extends Component {
         <Navbar></Navbar>
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="left col-md-3">
               <AsideLeft/>
             </div>
             <div className="col-md-6">

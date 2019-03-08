@@ -5,7 +5,21 @@
     border-radius: 50%;
     margin-right: 10px;
   }
-
+  
   .img-icon{
     padding: 10px; 
+    vertical-align: middle;
+    cursor: pointer;
   }
+
+  .img-select{
+    vertical-align: middle;
+    color:salmon;
+    padding: 10px; 
+    cursor: pointer;
+  }
+
+   span.img-icon:hover{
+    color: sandybrown
+  }
+  

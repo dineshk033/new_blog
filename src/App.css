@@ -1,0 +1,11 @@
+@media (min-width: 768px) { 
+    .left{
+        display:block
+    }
+ }
+
+ @media (max-width: 576px) {
+    .left{
+        display:none
+    }
+ }
