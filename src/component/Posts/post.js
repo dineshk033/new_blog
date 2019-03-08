@@ -2,9 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {commentShow,likePosts,disLikePosts } from '../action';
+import ImageView from './imageView';
+
 import './posts.css'
 function Post(props){
-
     const parentInput= {name:props.list.name,avatar:props.list.avatar, like:''};
 
     function renderList(){
@@ -15,7 +16,8 @@ function Post(props){
              //item.name===
                 <li className="list-group-item" key={index}>
                     <div  className="media">   
-                        <img src={item.avatar} className="mr-3 avatar" alt={item.name}/>
+                        <ImageView avatar={item.avatar} ClassView="mr-3 avatar"/>
+                        {/* <img src={item.avatar}  className="mr-3 avatar" alt={item.name}/> */}
                         <div className="media-body">
                             <h6 className="mt-0 mb-1">{item.name}</h6>
                                 {item.comment}
@@ -32,7 +34,8 @@ function Post(props){
                                    <h6 className="mt-0 mb-1 ">You</h6>
                                        {item.comment}
                                </div>
-                               <img src={item.avatar} className="ml-3 avatar float-right" alt={item.name}/> 
+                               <ImageView avatar={item.avatar} ClassView='ml-3 avatar float-right'/>
+                               {/* <img src={item.avatar} className="ml-3 avatar float-right" alt={item.name}/>  */}
                          </div>
                        </li>)}
             }        
@@ -52,11 +55,13 @@ function Post(props){
         
         <div className="card  mb-3">
             <div className="card-header">
-                <img src={props.list.avatar} alt="Avatar" className="avatar"/>
+                {/* <img src={props.list.avatar} alt="Avatar" className="avatar"/> */}
+                <ImageView avatar={props.list.avatar} ClassView='avatar'/>
                 <span className="card-title">{props.list.name}</span>
             </div>
-            <figure className="figure">
-                <img src={props.list.image} alt="Animals" className="card-img-top" />
+            <figure className={props.list.image? "h-100 figure":'d-none'} >
+                <ImageView avatar={props.list.image} ClassView='card-img-top imgHeight' />
+                {/* <img src={props.list.image} alt="Animals" className="card-img-top" /> */}
                 <figcaption className="figure-caption">
                     <span className={!props.list.starred ?"material-icons img-icon":"material-icons img-select"  }
                      onClick={()=>{Likes_Posts(props.list.id)}}>favorite</span>{props.list.likes} Likes
@@ -70,6 +75,16 @@ function Post(props){
             <div className="card-body">
                 <h5 className="card-title">{props.list.title}</h5>
                 <p className="card-text">{props.list.sentences}</p>
+                {!props.list.image &&
+                (<React.Fragment>
+                    <span className={!props.list.starred ?"material-icons img-icon":"material-icons img-select"  }
+                     onClick={()=>{Likes_Posts(props.list.id)}}>favorite</span>{props.list.likes} Likes
+                    <span 
+                    className={props.state !==props.list.id ?"material-icons img-icon":"material-icons img-select"  }
+                    onClick={()=>{props.commentShow(props.list.id)}}>comment</span>
+                    <span className="material-icons img-icon">share</span>
+                    <span className="material-icons img-icon float-right">bookmark</span></React.Fragment>
+                )}
                  {props.state ===props.list.id && (
                 <React.Fragment>
                  <ul className="list-group">

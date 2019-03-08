@@ -6,6 +6,9 @@
     margin-right: 10px;
   }
   
+  .imgHeight{
+    max-height:340px;
+  }
   .img-icon{
     padding: 10px; 
     vertical-align: middle;

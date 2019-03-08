@@ -31,7 +31,7 @@ class NewPosts extends React.Component{
     handleSubmit=(event)=>{
         event.preventDefault();
         event.target.reset();   
-        this.setState({comment:'',title:'',customFile:{name:'Choose Image'}})
+        this.setState({comment:'',title:'',customFile:{name:'Choose Image'},imagePreviewUrl:''})
         let newPost={id:faker.random.uuid(),
                     name:faker.name.findName(),
                     avatar:faker.image.avatar(),
